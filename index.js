@@ -47,17 +47,7 @@ class Server {
 
     // Static files
 
-    if (process.env.NODE_ENV == "production") {
-      this.app.use(express.static(path.join(__dirname, "./dist")));
-      this.app.get("*", (req, res) => {
-        res.status(200).sendFile(path.join(__dirname, "./dist", "index.html"));
-      });
-    } else {
-      this.app.use(express.static(path.join(__dirname, "dist")));
-      this.app.get("*", (req, res) => {
-        res.status(200).sendFile(path.join(__dirname, "dist", "index.html"));
-      });
-    }
+
   }
 
   listen() {
