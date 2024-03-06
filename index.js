@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const routes = require("./API/routes/routes");
-const path = require("path");
 
 class Server {
   constructor() {
@@ -19,6 +18,7 @@ class Server {
     dotenv.config();
 
     // Helmet middleware for security
+    this.app.use(helmet())
   
     
     const cors = require('cors')
