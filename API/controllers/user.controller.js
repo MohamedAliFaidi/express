@@ -1,4 +1,3 @@
-const dotenv = require("dotenv");
 const User = require("../models/user.model");
 const cloudinary = require("cloudinary").v2;
 

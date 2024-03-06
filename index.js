@@ -2,7 +2,6 @@ const express = require("express");
 const compression = require("compression");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
 const helmet = require("helmet");
 const routes = require("./API/routes/routes");
 
@@ -15,7 +14,6 @@ class Server {
   }
 
   setup() {
-    dotenv.config();
 
     // Helmet middleware for security
     this.app.use(helmet());
