@@ -18,7 +18,25 @@ class Server {
     dotenv.config();
 
     // Helmet middleware for security
-    this.app.use(helmet())
+    this.app.use(helmet());
+    this.app.use(helmet.hidePoweredBy());
+    this.app.use(helmet.frameguard({ action: "deny" }));
+    this.app.use(helmet.xssFilter());
+    this.app.use(helmet.noSniff());
+    this.app.use(helmet.ieNoOpen());
+    this.app.use(helmet.hsts({ maxAge: 90 * 24 * 60 * 60, force: true }));
+    this.app.use(helmet.dnsPrefetchControl());
+    this.app.use(
+      helmet.contentSecurityPolicy({
+        directives: {
+
+          defaultSrc: ["'self'"],
+          imgSrc: ["'self'", "https://res.cloudinary.com"] ,
+          scriptSrc: ["'self'"],
+          connectSrc: ["'self'",process.env.PROD,process.env.DEV],
+        },
+      })
+    );
   
     
     const cors = require('cors')
